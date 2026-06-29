@@ -1,0 +1,52 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: ["claude/taste-skill-integration-3hy4ne"]
+  workflow_dispatch:
+
+# Permissions the GITHUB_TOKEN needs to publish to Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deploy at a time; let a newer push cancel an in-flight one
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Stage site files (exclude skills bundle)
+        run: |
+          mkdir -p _site
+          cp index.html fighters.html news.html gallery.html contact.html _site/
+          cp styles.css particles.js app.js _site/
+          cp -r assets _site/assets
+
+      - name: Configure Pages (auto-enable if needed)
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
