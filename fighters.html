@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roster — Fighters First Management</title>
+  <meta name="description" content="The Fighters First Management roster. Full fighter bios, records, and tale of the tape." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <canvas id="spark-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav-brand" href="index.html" aria-label="Fighters First Management — home">
+        <span class="nav-logo logo-anim-container--nav"><b>Fighters First</b><span>Management</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="fighters.html" aria-current="page">Roster</a>
+        <a href="news.html">News</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Get Signed</a>
+        <a href="contact.html#reach" class="nav__cta">Contact</a>
+      </nav>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <nav class="nav__overlay" id="menu" aria-label="Mobile">
+    <a href="fighters.html"><span class="idx">01</span> Roster</a>
+    <a href="news.html"><span class="idx">02</span> News</a>
+    <a href="gallery.html"><span class="idx">03</span> Gallery</a>
+    <a href="contact.html"><span class="idx">04</span> Get Signed</a>
+    <a href="contact.html#reach"><span class="idx">05</span> Contact</a>
+  </nav>
+
+  <main class="page">
+    <div class="page-head">
+      <p class="eyebrow reveal">The Roster</p>
+      <h1 class="reveal" data-delay="1">Tale<br />Of The Tape</h1>
+      <p class="reveal" data-delay="2">Select a fighter to load their full bio. Records and tale of the tape update live &mdash; no page reload.</p>
+    </div>
+
+    <!-- two-panel: bio stage (left) + selector (right) -->
+    <div class="roster">
+      <section class="stage" data-fighter-stage aria-live="polite">
+        <!-- populated by app.js -->
+      </section>
+      <aside class="selector" data-selector aria-label="Fighter selector">
+        <!-- populated by app.js -->
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <a class="nav-brand" href="index.html" aria-label="Fighters First Management — home">
+          <span class="nav-logo"><b>Fighters First</b><span>Management</span></span>
+        </a>
+        <ul class="footer__links">
+          <li><a href="fighters.html">Roster</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Get Signed</a></li>
+          <li><a href="contact.html#reach">Contact</a></li>
+        </ul>
+        <div class="footer__social" aria-label="Social media">
+          <a href="#" aria-label="Instagram" rel="noopener"><img src="https://cdn.simpleicons.org/instagram/EFFBC6" alt="" width="18" height="18" /></a>
+          <a href="#" aria-label="X" rel="noopener"><img src="https://cdn.simpleicons.org/x/EFFBC6" alt="" width="18" height="18" /></a>
+          <a href="#" aria-label="Facebook" rel="noopener"><img src="https://cdn.simpleicons.org/facebook/EFFBC6" alt="" width="18" height="18" /></a>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <span>&copy; 2026 Fighters First Management</span>
+        <span>Fighter-First. Always.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== FIGHTER DATA =====================
+       Frank Martin = verified from brief. All others are PLACEHOLDER.
+       Unverified records use "" so the UI renders a dash, not a fabricated number.
+       Replace [UPDATE] fields with verified data before launch.
+  -->
+  <script>
+    window.FIGHTERS = [
+      {
+        id: 'frank',
+        first: 'Frank', last: 'Martin', nick: 'The Ghost',
+        initials: 'FM',
+        photo: 'https://static.wixstatic.com/media/1e0005_d8a1cec409b442ae8f6fb10aa735d9eb~mv2.jpg',
+        record: { w: 19, l: 1, d: 1, ko: 13 },
+        recLine: '19-1-1 · 13 KO',
+        weight: '135 lbs', height: '5’8"', reach: '68"',
+        born: 'Jan 12, 1995',
+        country: 'USA',
+        bornIn: 'Detroit, MI',
+        trainsIn: 'Detroit, MI',
+        stance: 'Southpaw',
+        rounds: '—',          /* [UPDATE] */
+        koPct: '68%',              /* 13 KO / 19 wins */
+        status: 'Active'
+      },
+      {
+        /* [UPDATE] Brian Norman Jr — placeholder, verify full record & tale of the tape */
+        id: 'brian',
+        first: 'Brian', last: 'Norman Jr', nick: 'The Assassin',
+        initials: 'BN',
+        photo: 'https://static.wixstatic.com/media/1e0005_69a878da86a7429785004a36385ad197~mv2.jpg',
+        record: { w: '', l: '', d: '', ko: '' },
+        recLine: 'Former World Champion',
+        weight: '147 lbs', height: '—', reach: '—',
+        born: '—', country: 'USA', bornIn: '—', trainsIn: '—',
+        stance: '—', rounds: '—', koPct: '—',
+        status: '[UPDATE] Record pending'
+      },
+      /* [UPDATE] placeholder fighters below — add photos, records, tale of the tape */
+      {
+        id: 'edwin', first: 'Edwin', last: 'de los Santos', nick: '',
+        initials: 'ES', photo: '',
+        record: { w: '', l: '', d: '', ko: '' }, recLine: '[UPDATE]',
+        weight: '—', height: '—', reach: '—',
+        born: '—', country: '—', bornIn: '—', trainsIn: '—',
+        stance: '—', rounds: '—', koPct: '—', status: '[UPDATE]'
+      },
+      {
+        id: 'dominique', first: 'Dominique', last: 'Francis', nick: '',
+        initials: 'DF', photo: '',
+        record: { w: '', l: '', d: '', ko: '' }, recLine: '[UPDATE]',
+        weight: '—', height: '—', reach: '—',
+        born: '—', country: '—', bornIn: '—', trainsIn: '—',
+        stance: '—', rounds: '—', koPct: '—', status: '[UPDATE]'
+      },
+      {
+        id: 'jesse', first: 'Jesse', last: 'Fletcher', nick: '',
+        initials: 'JF', photo: '',
+        record: { w: '', l: '', d: '', ko: '' }, recLine: '[UPDATE]',
+        weight: '—', height: '—', reach: '—',
+        born: '—', country: '—', bornIn: '—', trainsIn: '—',
+        stance: '—', rounds: '—', koPct: '—', status: '[UPDATE]'
+      },
+      {
+        id: 'joseph', first: 'Joseph', last: 'Almajdi', nick: '',
+        initials: 'JA', photo: '',
+        record: { w: '', l: '', d: '', ko: '' }, recLine: '[UPDATE]',
+        weight: '—', height: '—', reach: '—',
+        born: '—', country: '—', bornIn: '—', trainsIn: '—',
+        stance: '—', rounds: '—', koPct: '—', status: '[UPDATE]'
+      },
+      {
+        id: 'justin', first: 'Justin', last: 'Pauldo', nick: '',
+        initials: 'JP', photo: '',
+        record: { w: '', l: '', d: '', ko: '' }, recLine: '[UPDATE]',
+        weight: '—', height: '—', reach: '—',
+        born: '—', country: '—', bornIn: '—', trainsIn: '—',
+        stance: '—', rounds: '—', koPct: '—', status: '[UPDATE]'
+      }
+    ];
+  </script>
+
+  <script src="particles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

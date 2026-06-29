@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Signed — Fighters First Management</title>
+  <meta name="description" content="Fighters First is accepting inquiries from professional and elite amateur fighters. Represent your future." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <canvas id="spark-canvas" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav-brand" href="index.html" aria-label="Fighters First Management — home">
+        <span class="nav-logo logo-anim-container--nav"><b>Fighters First</b><span>Management</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="fighters.html">Roster</a>
+        <a href="news.html">News</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" aria-current="page">Get Signed</a>
+        <a href="contact.html#reach" class="nav__cta">Contact</a>
+      </nav>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <nav class="nav__overlay" id="menu" aria-label="Mobile">
+    <a href="fighters.html"><span class="idx">01</span> Roster</a>
+    <a href="news.html"><span class="idx">02</span> News</a>
+    <a href="gallery.html"><span class="idx">03</span> Gallery</a>
+    <a href="contact.html"><span class="idx">04</span> Get Signed</a>
+    <a href="contact.html#reach"><span class="idx">05</span> Contact</a>
+  </nav>
+
+  <main class="page">
+    <div class="page-head">
+      <p class="eyebrow reveal">Get Signed</p>
+      <h1 class="reveal" data-delay="1">Represent<br />Your Future</h1>
+      <p class="reveal" data-delay="2">Fighters First is accepting inquiries from professional and elite amateur fighters.</p>
+    </div>
+
+    <div class="form-wrap reveal" data-delay="1">
+      <!-- demo form — no backend. Logs payload + shows success message. -->
+      <form class="form" data-signup-form novalidate>
+        <div class="field field--full">
+          <label for="name">Full Name <span class="req">*</span></label>
+          <input id="name" name="fullName" type="text" placeholder="First and last name" required />
+        </div>
+
+        <div class="field">
+          <label for="weight">Weight Class <span class="req">*</span></label>
+          <select id="weight" name="weightClass" required>
+            <option value="" disabled selected>Select division</option>
+            <option>Heavyweight</option>
+            <option>Cruiserweight</option>
+            <option>Light Heavyweight</option>
+            <option>Super Middleweight</option>
+            <option>Middleweight</option>
+            <option>Super Welterweight</option>
+            <option>Welterweight</option>
+            <option>Super Lightweight</option>
+            <option>Lightweight</option>
+            <option>Super Featherweight</option>
+            <option>Featherweight</option>
+            <option>Super Bantamweight</option>
+            <option>Bantamweight</option>
+            <option>Super Flyweight</option>
+            <option>Flyweight</option>
+            <option>Light Flyweight</option>
+            <option>Minimumweight / Strawweight</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="record">Professional Record</label>
+          <input id="record" name="proRecord" type="text" placeholder="e.g. 12-0-1, 8 KO" />
+        </div>
+
+        <div class="field">
+          <label for="location">Country / City</label>
+          <input id="location" name="location" type="text" placeholder="e.g. Detroit, USA" />
+        </div>
+
+        <div class="field">
+          <label for="instagram">Instagram Handle</label>
+          <input id="instagram" name="instagram" type="text" placeholder="@yourhandle" />
+        </div>
+
+        <div class="field field--full">
+          <label for="reel">Highlight Reel Link</label>
+          <input id="reel" name="highlightReel" type="url" placeholder="YouTube or Vimeo URL" />
+        </div>
+
+        <div class="field field--full">
+          <label for="message">Message / Why Fighters First?</label>
+          <textarea id="message" name="message" placeholder="Tell us about your career and your goals."></textarea>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn btn--solid" type="submit">
+            Submit For Consideration <span class="arrow" aria-hidden="true">&rarr;</span>
+          </button>
+          <span class="form__note">Demo form — no data is sent</span>
+        </div>
+
+        <div class="form__success" aria-live="polite">
+          <span aria-hidden="true">✦</span>
+          <span><strong>Received.</strong> This is a demo submission — your details were logged to the console. Our team reviews every inquiry. Stay ready.</span>
+        </div>
+      </form>
+    </div>
+
+    <!-- direct contact block (nav "Contact" anchors here) -->
+    <section class="reach" id="reach" aria-label="Direct contact">
+      <div class="reach__item reveal">
+        <p class="k">General</p>
+        <p class="v">info@fightersfirst.com</p>
+      </div>
+      <div class="reach__item reveal" data-delay="1">
+        <p class="k">Representation</p>
+        <p class="v">Use the Get Signed form above</p>
+      </div>
+      <div class="reach__item reveal" data-delay="2">
+        <p class="k">Social</p>
+        <p class="v">@fightersfirst</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <a class="nav-brand" href="index.html" aria-label="Fighters First Management — home">
+          <span class="nav-logo"><b>Fighters First</b><span>Management</span></span>
+        </a>
+        <ul class="footer__links">
+          <li><a href="fighters.html">Roster</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Get Signed</a></li>
+          <li><a href="contact.html#reach">Contact</a></li>
+        </ul>
+        <div class="footer__social" aria-label="Social media">
+          <a href="#" aria-label="Instagram" rel="noopener"><img src="https://cdn.simpleicons.org/instagram/EFFBC6" alt="" width="18" height="18" /></a>
+          <a href="#" aria-label="X" rel="noopener"><img src="https://cdn.simpleicons.org/x/EFFBC6" alt="" width="18" height="18" /></a>
+          <a href="#" aria-label="Facebook" rel="noopener"><img src="https://cdn.simpleicons.org/facebook/EFFBC6" alt="" width="18" height="18" /></a>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <span>&copy; 2026 Fighters First Management</span>
+        <span>Fighter-First. Always.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="particles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

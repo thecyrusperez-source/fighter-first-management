@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fighters First Management — Dark Luxury Boxing Management</title>
+  <meta name="description" content="Fighters First Management — a fighter-first boxing management studio. Every fighter we represent is protected by our Bill of Rights." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <!-- persistent spark backdrop -->
+  <canvas id="spark-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav-brand" href="index.html" aria-label="Fighters First Management — home">
+        <!-- logo-anim-container placeholder (nav variant) for injected mark -->
+        <span class="nav-logo logo-anim-container--nav">
+          <b>Fighters First</b>
+          <span>Management</span>
+        </span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="fighters.html">Roster</a>
+        <a href="news.html">News</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Get Signed</a>
+        <a href="contact.html#reach" class="nav__cta">Contact</a>
+      </nav>
+
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- full-screen overlay menu -->
+  <nav class="nav__overlay" id="menu" aria-label="Mobile">
+    <a href="fighters.html"><span class="idx">01</span> Roster</a>
+    <a href="news.html"><span class="idx">02</span> News</a>
+    <a href="gallery.html"><span class="idx">03</span> Gallery</a>
+    <a href="contact.html"><span class="idx">04</span> Get Signed</a>
+    <a href="contact.html#reach"><span class="idx">05</span> Contact</a>
+  </nav>
+
+  <main class="page">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <p class="logo-note">Logo animation — Grok render (placeholder)</p>
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <!-- logo-anim-container: leave for injecting Grok animation later -->
+      <div class="logo-anim-container" role="img" aria-label="Fighters First Management logo">
+        <!-- PLACEHOLDER: replace .logo-fallback with rendered logo animation -->
+        <div class="logo-fallback">
+          <span class="emblem" aria-hidden="true"></span>
+          <span class="mark">Fighters First</span>
+          <span class="sub">Management</span>
+        </div>
+      </div>
+
+      <a href="#featured" class="scroll-cue" aria-label="Scroll to fighters">
+        <span>Enter</span>
+        <span class="chev" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ===================== FEATURED FIGHTERS ===================== -->
+    <section class="section featured" id="featured">
+      <div class="wrap">
+        <div class="featured__head reveal">
+          <p class="eyebrow">The Marquee</p>
+          <h2>Champions We Represent</h2>
+          <p>Tap a fighter to open their full bio.</p>
+        </div>
+
+        <div class="featured__grid">
+          <!-- LEFT — Brian Norman Jr -->
+          <a class="fcard reveal" data-delay="1" href="fighters.html?fighter=brian"
+             aria-label="Brian Norman Jr — view full bio">
+            <div class="fcard__media">
+              <img src="https://static.wixstatic.com/media/1e0005_69a878da86a7429785004a36385ad197~mv2.jpg"
+                   alt="Brian Norman Jr, arm raised in victory" loading="lazy" decoding="async" />
+            </div>
+            <div class="fcard__body">
+              <p class="fcard__first">Brian</p>
+              <h3 class="fcard__last">Norman Jr</h3>
+              <p class="fcard__nick">&ldquo;The Assassin&rdquo;</p>
+              <!-- data line spawns off the image -->
+              <p class="fcard__data" data-line="Former World Champion">Former World Champion</p>
+              <span class="fcard__view">View Bio <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- CENTER — roster CTA (per skeleton) -->
+          <div class="roster-cta reveal" data-delay="2">
+            <span class="rule" aria-hidden="true"></span>
+            <h3>See more fighters in the <em>Roster</em></h3>
+            <a class="btn" href="fighters.html">Open Roster <span class="arrow" aria-hidden="true">&rarr;</span></a>
+            <span class="rule" aria-hidden="true"></span>
+          </div>
+
+          <!-- RIGHT — Frank Martin -->
+          <a class="fcard reveal" data-delay="3" href="fighters.html?fighter=frank"
+             aria-label="Frank Martin — view full bio">
+            <div class="fcard__media">
+              <img src="https://static.wixstatic.com/media/1e0005_d8a1cec409b442ae8f6fb10aa735d9eb~mv2.jpg"
+                   alt="Frank Martin during a post-fight interview" loading="lazy" decoding="async" />
+            </div>
+            <div class="fcard__body">
+              <p class="fcard__first">Frank</p>
+              <h3 class="fcard__last">Martin</h3>
+              <p class="fcard__nick">&ldquo;The Ghost&rdquo;</p>
+              <p class="fcard__data" data-line="19 - 1 - 1  ·  13 KO">19 - 1 - 1  ·  13 KO</p>
+              <span class="fcard__view">View Bio <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ADRIAN CLARK ===================== -->
+    <section class="section owner" id="owner">
+      <div class="wrap">
+        <div class="owner__grid">
+          <!-- owner hero pic -->
+          <div class="owner__media reveal">
+            <!-- PLACEHOLDER: Adrian Clark owner hero photo (no URL provided yet) -->
+            <div class="ph-fill">
+              <span class="ini">AC</span>
+              <span class="tag">Owner Photo Pending</span>
+            </div>
+          </div>
+
+          <div class="owner__body reveal" data-delay="1">
+            <p class="eyebrow">The Man Behind The Scenes</p>
+            <h2>The Man Behind<br />The Fighters<span class="name">Adrian Clark</span></h2>
+            <!-- PLACEHOLDER copy — mission/philosophy, no fabricated biography -->
+            <p>
+              Adrian Clark built Fighters First on a single principle: the fighter comes first,
+              inside the ropes and out. The studio exists to put career control back in the
+              hands of the athletes who earn it. Every contract, every negotiation, every
+              decision is measured against one question &mdash; does this serve the fighter?
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BILL OF RIGHTS ===================== -->
+    <section class="section bor" id="bill-of-rights">
+      <div class="wrap">
+        <p class="eyebrow reveal">The Commitment</p>
+        <blockquote class="bor__quote reveal" data-delay="1">
+          Every fighter we represent is protected by our <em>Bill of Rights.</em>
+        </blockquote>
+        <a class="btn btn--solid reveal" data-delay="2" href="#bor-list">
+          Read The Commitment <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <!-- PLACEHOLDER: mission principles, not legal claims. Refine with real document. -->
+        <ul class="bor-list" id="bor-list">
+          <li class="reveal">
+            <span class="num">01</span>
+            <div>
+              <h4>Transparent Contracts</h4>
+              <p>Plain-language agreements. No hidden clauses, no fine-print traps.</p>
+            </div>
+          </li>
+          <li class="reveal" data-delay="1">
+            <span class="num">02</span>
+            <div>
+              <h4>Fair Purse Splits</h4>
+              <p>The fighter keeps what the fighter earns. Splits disclosed up front.</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="num">03</span>
+            <div>
+              <h4>Medical &amp; Safety First</h4>
+              <p>No fight is worth a fighter's long-term health. Their well-being leads.</p>
+            </div>
+          </li>
+          <li class="reveal" data-delay="1">
+            <span class="num">04</span>
+            <div>
+              <h4>Career Ownership</h4>
+              <p>Fighters keep a real say in matchmaking, branding, and timeline.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <a class="nav-brand" href="index.html" aria-label="Fighters First Management — home">
+          <span class="nav-logo"><b>Fighters First</b><span>Management</span></span>
+        </a>
+        <ul class="footer__links">
+          <li><a href="fighters.html">Roster</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Get Signed</a></li>
+          <li><a href="contact.html#reach">Contact</a></li>
+        </ul>
+        <div class="footer__social" aria-label="Social media">
+          <a href="#" aria-label="Instagram" rel="noopener"><img src="https://cdn.simpleicons.org/instagram/EFFBC6" alt="" width="18" height="18" /></a>
+          <a href="#" aria-label="X" rel="noopener"><img src="https://cdn.simpleicons.org/x/EFFBC6" alt="" width="18" height="18" /></a>
+          <a href="#" aria-label="Facebook" rel="noopener"><img src="https://cdn.simpleicons.org/facebook/EFFBC6" alt="" width="18" height="18" /></a>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <span>&copy; 2026 Fighters First Management</span>
+        <span>Fighter-First. Always.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="particles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

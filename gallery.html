@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Fighters First Management</title>
+  <meta name="description" content="Inside the camp — the Fighters First Management gallery." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <canvas id="spark-canvas" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav-brand" href="index.html" aria-label="Fighters First Management — home">
+        <span class="nav-logo logo-anim-container--nav"><b>Fighters First</b><span>Management</span></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="fighters.html">Roster</a>
+        <a href="news.html">News</a>
+        <a href="gallery.html" aria-current="page">Gallery</a>
+        <a href="contact.html">Get Signed</a>
+        <a href="contact.html#reach" class="nav__cta">Contact</a>
+      </nav>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <nav class="nav__overlay" id="menu" aria-label="Mobile">
+    <a href="fighters.html"><span class="idx">01</span> Roster</a>
+    <a href="news.html"><span class="idx">02</span> News</a>
+    <a href="gallery.html"><span class="idx">03</span> Gallery</a>
+    <a href="contact.html"><span class="idx">04</span> Get Signed</a>
+    <a href="contact.html#reach"><span class="idx">05</span> Contact</a>
+  </nav>
+
+  <main class="page">
+    <div class="page-head">
+      <p class="eyebrow reveal">Inside The Camp</p>
+      <h1 class="reveal" data-delay="1">Gallery</h1>
+      <p class="reveal" data-delay="2">Fight night, training, and the moments between. Placeholder tiles below until the gallery is populated.</p>
+    </div>
+
+    <!-- PLACEHOLDER: replace tiles with real photography -->
+    <div class="gallery-grid">
+      <figure class="tile reveal"><div class="ph-fill"><span class="ini">01</span></div><figcaption class="cap">Fight Night</figcaption></figure>
+      <figure class="tile reveal" data-delay="1"><div class="ph-fill"><span class="ini">02</span></div><figcaption class="cap">Training Camp</figcaption></figure>
+      <figure class="tile reveal" data-delay="2"><div class="ph-fill"><span class="ini">03</span></div><figcaption class="cap">Weigh-In</figcaption></figure>
+      <figure class="tile reveal"><div class="ph-fill"><span class="ini">04</span></div><figcaption class="cap">Ringwalk</figcaption></figure>
+      <figure class="tile reveal" data-delay="1"><div class="ph-fill"><span class="ini">05</span></div><figcaption class="cap">Backstage</figcaption></figure>
+      <figure class="tile reveal" data-delay="2"><div class="ph-fill"><span class="ini">06</span></div><figcaption class="cap">Victory</figcaption></figure>
+      <figure class="tile reveal"><div class="ph-fill"><span class="ini">07</span></div><figcaption class="cap">Press</figcaption></figure>
+      <figure class="tile reveal" data-delay="1"><div class="ph-fill"><span class="ini">08</span></div><figcaption class="cap">The Corner</figcaption></figure>
+      <figure class="tile reveal" data-delay="2"><div class="ph-fill"><span class="ini">09</span></div><figcaption class="cap">Roadwork</figcaption></figure>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <a class="nav-brand" href="index.html" aria-label="Fighters First Management — home">
+          <span class="nav-logo"><b>Fighters First</b><span>Management</span></span>
+        </a>
+        <ul class="footer__links">
+          <li><a href="fighters.html">Roster</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Get Signed</a></li>
+          <li><a href="contact.html#reach">Contact</a></li>
+        </ul>
+        <div class="footer__social" aria-label="Social media">
+          <a href="#" aria-label="Instagram" rel="noopener"><img src="https://cdn.simpleicons.org/instagram/EFFBC6" alt="" width="18" height="18" /></a>
+          <a href="#" aria-label="X" rel="noopener"><img src="https://cdn.simpleicons.org/x/EFFBC6" alt="" width="18" height="18" /></a>
+          <a href="#" aria-label="Facebook" rel="noopener"><img src="https://cdn.simpleicons.org/facebook/EFFBC6" alt="" width="18" height="18" /></a>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <span>&copy; 2026 Fighters First Management</span>
+        <span>Fighter-First. Always.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="particles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
