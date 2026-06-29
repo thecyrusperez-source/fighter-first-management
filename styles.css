@@ -1119,6 +1119,152 @@ body.menu-open .nav__overlay a:nth-child(6) { transition-delay: 0.40s; }
 .tile:hover .cap { opacity: 1; transform: none; }
 
 /* ============================================================
+   HERO v2 — unified cinematic composition (cutouts + center CTA)
+   Overrides the earlier .hero rules (later source order wins).
+   ============================================================ */
+.hero {
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: calc(var(--nav-h) + clamp(0.5rem, 2.5vw, 1.75rem));
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+}
+
+/* atmospheric spotlight beams from top center */
+.hero__beams { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.hero__beams::before,
+.hero__beams::after {
+  content: "";
+  position: absolute;
+  top: -18%; left: 50%;
+  width: 48vw; height: 135vh;
+  background: linear-gradient(to bottom, rgba(239,251,198,0.08), rgba(239,251,198,0.02) 42%, transparent 66%);
+  transform-origin: top center;
+  filter: blur(16px);
+}
+.hero__beams::before { transform: translateX(-50%) rotate(-21deg); }
+.hero__beams::after  { transform: translateX(-50%) rotate(21deg); }
+
+/* logo, top center, borderless (floats on the arena) */
+.hero__logo { position: relative; z-index: 3; width: min(72vw, 440px); margin-top: clamp(0.25rem, 2vw, 1rem); }
+.hero__logo .logo-anim-container {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+  overflow: visible;
+}
+.hero__logo .logo-anim-container::before {
+  content: "";
+  position: absolute;
+  inset: -14% -8%;
+  background: radial-gradient(circle at 50% 46%, var(--accent-glow), transparent 62%);
+  filter: blur(24px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* stage grid: fighter | CTA | fighter */
+.hero__stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1340px;
+  margin-inline: auto;
+  flex: 1 1 auto;
+  min-height: clamp(360px, 50vh, 600px);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  gap: 1.25rem;
+}
+@media (min-width: 920px) {
+  .hero__stage { grid-template-columns: 1fr minmax(220px, auto) 1fr; align-items: center; gap: 0; }
+}
+
+/* center CTA */
+.roster-cta { z-index: 6; }
+.roster-cta__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.roster-cta__title em { font-style: normal; color: var(--accent-bright); }
+
+/* fighters — frameless cutouts that fade into the background */
+.fighter { position: relative; z-index: 1; display: block; text-decoration: none; align-self: end; min-width: 0; }
+.fighter__cut {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+  object-fit: contain;
+  transition: filter 0.55s var(--ease), transform 0.55s var(--ease);
+}
+/* real transparent cutout (assets/*-cutout.png): keep colour, add depth */
+.fighter__cut:not(.is-photo) {
+  filter: drop-shadow(0 24px 50px rgba(0,0,0,0.6)) drop-shadow(0 0 30px rgba(141,32,1,0.18));
+}
+/* fallback rectangular photo: desaturate + feather the edges into the bg */
+.fighter__cut.is-photo {
+  filter: grayscale(1) contrast(1.12) brightness(1.05);
+  -webkit-mask-image: radial-gradient(118% 96% at 50% 40%, #000 54%, rgba(0,0,0,0) 80%);
+          mask-image: radial-gradient(118% 96% at 50% 40%, #000 54%, rgba(0,0,0,0) 80%);
+}
+
+.fighter__label {
+  position: absolute;
+  bottom: clamp(0.5rem, 3vw, 2rem);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: max-content;
+  max-width: 86%;
+  text-shadow: 0 2px 14px rgba(1, 11, 20, 0.92), 0 0 4px rgba(1, 11, 20, 0.8);
+}
+.fighter__first { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); }
+.fighter__last { font-family: var(--font-display); font-size: clamp(1.7rem, 3.4vw, 2.6rem); line-height: 0.9; text-transform: uppercase; }
+.fighter__last::after { content: ""; display: block; width: 42px; height: 3px; margin-top: 0.5rem; background: var(--accent); box-shadow: 0 0 14px var(--accent-glow); }
+.fighter__nick { font-style: italic; color: var(--text-muted); font-size: 0.9rem; margin-top: 0.45rem; }
+.fighter__data { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-bright); min-height: 1.1em; margin-top: 0.2rem; }
+.fighter__view { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); display: inline-flex; gap: 0.4rem; margin-top: 0.5rem; transition: color 0.3s var(--ease); }
+.fighter__view .arrow,
+.fighter__view span { transition: transform 0.4s var(--ease); }
+.fighter:hover .fighter__cut { transform: translateY(-5px); }
+.fighter:hover .fighter__cut.is-photo { filter: grayscale(0.35) contrast(1.15) brightness(1.08); }
+.fighter:hover .fighter__last { color: #fff; }
+.fighter:hover .fighter__view { color: var(--text); }
+.fighter:hover .fighter__view .arrow,
+.fighter:hover .fighter__view span:last-child { transform: translateX(4px); }
+
+/* desktop: bleed the cutouts outward, anchor labels toward the centre */
+@media (min-width: 920px) {
+  .fighter { width: min(38vw, 540px); align-self: center; }
+  .fighter--left  { justify-self: start; transform: translateX(clamp(-90px, -6vw, -30px)); }
+  .fighter--right { justify-self: end;   transform: translateX(clamp(30px, 6vw, 90px)); }
+  .fighter--left  .fighter__label { right: 6%; left: auto; text-align: left; align-items: flex-start; }
+  .fighter--right .fighter__label { left: 6%; right: auto; text-align: left; align-items: flex-start; }
+}
+/* mobile: stack logo, Brian, CTA, Frank; centre the labels under each figure */
+@media (max-width: 919px) {
+  .fighter { width: min(74vw, 360px); margin-inline: auto; }
+  .fighter__label { position: relative; bottom: auto; margin-top: -2.5rem; align-items: center; text-align: center; width: 100%; }
+  .fighter__last::after { margin-inline: auto; }
+}
+
+/* owner photo overlays the placeholder when present */
+.owner__media { position: relative; }
+.owner__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; z-index: 1; }
+.owner__more { margin-top: 1.6rem; }
+
+/* ============================================================
    INTRO ANIMATION OVERLAY
    ============================================================ */
 .intro {

@@ -141,12 +141,12 @@
 
   /* ---------------- Scroll reveals ---------------- */
   (function reveals() {
-    var els = document.querySelectorAll('.reveal, [data-count], .fcard__data');
+    var els = document.querySelectorAll('.reveal, [data-count], [data-line]');
     if (!('IntersectionObserver' in window)) {
       els.forEach(function (el) {
         el.classList.add('in');
         if (el.hasAttribute('data-count')) countUp(el);
-        if (el.classList.contains('fcard__data')) el.textContent = el.getAttribute('data-line') || el.textContent;
+        if (el.hasAttribute('data-line')) el.textContent = el.getAttribute('data-line') || el.textContent;
       });
       return;
     }
@@ -156,7 +156,7 @@
         var el = entry.target;
         el.classList.add('in');
         if (el.hasAttribute('data-count')) countUp(el);
-        if (el.classList.contains('fcard__data')) spawnDataLine(el);
+        if (el.hasAttribute('data-line')) spawnDataLine(el);
         io.unobserve(el);
       });
     }, { threshold: 0.25, rootMargin: '0px 0px -8% 0px' });

@@ -62,108 +62,99 @@
   </nav>
 
   <main class="page">
-    <!-- ===================== HERO ===================== -->
-    <section class="hero">
-      <p class="logo-note">Logo animation — Grok render (placeholder)</p>
+    <!-- ===================== HERO — unified cinematic composition ===================== -->
+    <section class="hero" id="top">
+      <div class="hero__beams" aria-hidden="true"></div>
       <div class="hero__glow" aria-hidden="true"></div>
 
-      <!-- logo-anim-container: now holds the Grok-rendered logo animation.
-           The intro video shrinks into this box and hands off to this loop. -->
-      <div class="logo-anim-container" role="img" aria-label="Fighters First Management logo">
-        <video class="logo-video" muted loop playsinline autoplay preload="auto">
-          <source src="assets/ff-animation.mp4" type="video/mp4" />
-        </video>
-        <!-- fallback wordmark if video can't play -->
-        <div class="logo-fallback" aria-hidden="true">
-          <span class="emblem"></span>
-          <span class="mark">Fighters First</span>
-          <span class="sub">Management</span>
+      <!-- LOGO (top center). The intro video shrinks into this box. -->
+      <div class="hero__logo">
+        <div class="logo-anim-container" role="img" aria-label="Fighters First Management logo">
+          <video class="logo-video" muted loop playsinline autoplay preload="auto">
+            <source src="assets/ff-animation.mp4" type="video/mp4" />
+          </video>
+          <!-- fallback wordmark if video can't play -->
+          <div class="logo-fallback" aria-hidden="true">
+            <span class="emblem"></span>
+            <span class="mark">Fighters First</span>
+            <span class="sub">Management</span>
+          </div>
         </div>
       </div>
 
-      <a href="#featured" class="scroll-cue" aria-label="Scroll to fighters">
-        <span>Enter</span>
+      <!-- STAGE: left cutout | roster CTA | right cutout -->
+      <div class="hero__stage">
+        <!-- LEFT — Brian Norman Jr.  Drop assets/brian-cutout.png (transparent PNG)
+             and it is used automatically; otherwise it falls back to the Wix photo. -->
+        <a class="fighter fighter--left reveal" href="fighters.html?fighter=brian"
+           aria-label="Brian Norman Jr — view full bio">
+          <img class="fighter__cut" src="assets/brian-cutout.png"
+               onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/1e0005_69a878da86a7429785004a36385ad197~mv2.jpg';this.classList.add('is-photo')"
+               alt="Brian Norman Jr" decoding="async" />
+          <span class="fighter__label">
+            <span class="fighter__first">Brian</span>
+            <span class="fighter__last">Norman Jr</span>
+            <span class="fighter__nick">&ldquo;The Assassin&rdquo;</span>
+            <span class="fighter__data" data-line="Former World Champion">Former World Champion</span>
+            <span class="fighter__view">View Bio <span aria-hidden="true">&rarr;</span></span>
+          </span>
+        </a>
+
+        <!-- CENTER — roster CTA (kept; works well) -->
+        <div class="roster-cta reveal" data-delay="1">
+          <span class="rule" aria-hidden="true"></span>
+          <h2 class="roster-cta__title">See More<br />Fighters<br />In The<br /><em>Roster</em></h2>
+          <a class="btn" href="fighters.html">Open Roster <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <span class="rule" aria-hidden="true"></span>
+        </div>
+
+        <!-- RIGHT — Frank Martin.  Drop assets/frank-cutout.png for a clean cutout. -->
+        <a class="fighter fighter--right reveal" data-delay="1" href="fighters.html?fighter=frank"
+           aria-label="Frank Martin — view full bio">
+          <img class="fighter__cut" src="assets/frank-cutout.png"
+               onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/1e0005_d8a1cec409b442ae8f6fb10aa735d9eb~mv2.jpg';this.classList.add('is-photo')"
+               alt="Frank Martin" decoding="async" />
+          <span class="fighter__label">
+            <span class="fighter__first">Frank</span>
+            <span class="fighter__last">Martin</span>
+            <span class="fighter__nick">&ldquo;The Ghost&rdquo;</span>
+            <span class="fighter__data" data-line="19 - 1 - 1 &middot; 13 KO">19 - 1 - 1 &middot; 13 KO</span>
+            <span class="fighter__view">View Bio <span aria-hidden="true">&rarr;</span></span>
+          </span>
+        </a>
+      </div>
+
+      <a href="#owner" class="scroll-cue" aria-label="Scroll down">
         <span class="chev" aria-hidden="true"></span>
       </a>
-    </section>
-
-    <!-- ===================== FEATURED FIGHTERS ===================== -->
-    <section class="section featured" id="featured">
-      <div class="wrap">
-        <div class="featured__head reveal">
-          <p class="eyebrow">The Marquee</p>
-          <h2>Champions We Represent</h2>
-          <p>Tap a fighter to open their full bio.</p>
-        </div>
-
-        <div class="featured__grid">
-          <!-- LEFT — Brian Norman Jr -->
-          <a class="fcard reveal" data-delay="1" href="fighters.html?fighter=brian"
-             aria-label="Brian Norman Jr — view full bio">
-            <div class="fcard__media">
-              <img src="https://static.wixstatic.com/media/1e0005_69a878da86a7429785004a36385ad197~mv2.jpg"
-                   alt="Brian Norman Jr, arm raised in victory" loading="lazy" decoding="async" />
-            </div>
-            <div class="fcard__body">
-              <p class="fcard__first">Brian</p>
-              <h3 class="fcard__last">Norman Jr</h3>
-              <p class="fcard__nick">&ldquo;The Assassin&rdquo;</p>
-              <!-- data line spawns off the image -->
-              <p class="fcard__data" data-line="Former World Champion">Former World Champion</p>
-              <span class="fcard__view">View Bio <span aria-hidden="true">&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- CENTER — roster CTA (per skeleton) -->
-          <div class="roster-cta reveal" data-delay="2">
-            <span class="rule" aria-hidden="true"></span>
-            <h3>See more fighters in the <em>Roster</em></h3>
-            <a class="btn" href="fighters.html">Open Roster <span class="arrow" aria-hidden="true">&rarr;</span></a>
-            <span class="rule" aria-hidden="true"></span>
-          </div>
-
-          <!-- RIGHT — Frank Martin -->
-          <a class="fcard reveal" data-delay="3" href="fighters.html?fighter=frank"
-             aria-label="Frank Martin — view full bio">
-            <div class="fcard__media">
-              <img src="https://static.wixstatic.com/media/1e0005_d8a1cec409b442ae8f6fb10aa735d9eb~mv2.jpg"
-                   alt="Frank Martin during a post-fight interview" loading="lazy" decoding="async" />
-            </div>
-            <div class="fcard__body">
-              <p class="fcard__first">Frank</p>
-              <h3 class="fcard__last">Martin</h3>
-              <p class="fcard__nick">&ldquo;The Ghost&rdquo;</p>
-              <p class="fcard__data" data-line="19 - 1 - 1  ·  13 KO">19 - 1 - 1  ·  13 KO</p>
-              <span class="fcard__view">View Bio <span aria-hidden="true">&rarr;</span></span>
-            </div>
-          </a>
-        </div>
-      </div>
     </section>
 
     <!-- ===================== ADRIAN CLARK ===================== -->
     <section class="section owner" id="owner">
       <div class="wrap">
         <div class="owner__grid">
-          <!-- owner hero pic -->
+          <!-- owner hero pic. Drop assets/adrian.jpg and it is used automatically. -->
           <div class="owner__media reveal">
-            <!-- PLACEHOLDER: Adrian Clark owner hero photo (no URL provided yet) -->
+            <img src="assets/adrian.jpg" alt="Adrian Clark, Owner &amp; CEO" decoding="async"
+                 onerror="this.style.display='none'" />
             <div class="ph-fill">
               <span class="ini">AC</span>
-              <span class="tag">Owner Photo Pending</span>
+              <span class="tag">Add assets/adrian.jpg</span>
             </div>
           </div>
 
           <div class="owner__body reveal" data-delay="1">
-            <p class="eyebrow">The Man Behind The Scenes</p>
-            <h2>The Man Behind<br />The Fighters<span class="name">Adrian Clark</span></h2>
-            <!-- PLACEHOLDER copy — mission/philosophy, no fabricated biography -->
+            <p class="eyebrow">Owner &amp; CEO</p>
+            <h2>The Man Behind<br />The Scenes<span class="name">&mdash; Adrian Clark</span></h2>
             <p>
-              Adrian Clark built Fighters First on a single principle: the fighter comes first,
-              inside the ropes and out. The studio exists to put career control back in the
-              hands of the athletes who earn it. Every contract, every negotiation, every
-              decision is measured against one question &mdash; does this serve the fighter?
+              Adrian Clark is the driving force behind Fighters First Management. With a
+              fighter's mindset and a strategist's vision, he's dedicated to building champions
+              in and out of the ring. From career guidance to global opportunities, Adrian leads
+              with purpose, loyalty, and excellence.
             </p>
+            <a class="link-arrow owner__more" href="#bill-of-rights">
+              Learn More <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
           </div>
         </div>
       </div>
