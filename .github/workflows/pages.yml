@@ -1,8 +1,8 @@
 name: Deploy site to GitHub Pages
 
+# Manual-only: GitHub Pages must be enabled once first
+# (Settings -> Pages -> Source: "GitHub Actions"), then run this workflow.
 on:
-  push:
-    branches: ["claude/taste-skill-integration-3hy4ne"]
   workflow_dispatch:
 
 # Permissions the GITHUB_TOKEN needs to publish to Pages
