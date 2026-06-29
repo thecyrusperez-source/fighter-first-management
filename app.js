@@ -37,6 +37,70 @@
     });
   })();
 
+  /* ---------------- Intro animation ----------------
+     Full-screen video on load, then FLIP-shrinks into the hero logo box
+     and hands off to the looping .logo-video. Never traps the page:
+     skips on reduced-motion, decode error, or timeout. */
+  (function intro() {
+    var overlay = document.getElementById('intro');
+    if (!overlay) return;
+    var vid = overlay.querySelector('.intro__video');
+    var target = document.querySelector('.hero .logo-anim-container');
+    var skip = overlay.querySelector('.intro__skip');
+    var done = false;
+
+    function unlock() { document.body.classList.remove('intro-active'); }
+    function teardown() {
+      if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      unlock();
+    }
+
+    function finish() {
+      if (done) return;
+      done = true;
+      // FLIP: shrink the full-screen video down to the hero logo's rect
+      if (target && vid) {
+        var f = vid.getBoundingClientRect();
+        var t = target.getBoundingClientRect();
+        if (f.width && t.width) {
+          var s = Math.min(t.width / f.width, t.height / f.height);
+          var tx = (t.left + t.width / 2) - (f.left + f.width / 2);
+          var ty = (t.top + t.height / 2) - (f.top + f.height / 2);
+          vid.style.transformOrigin = 'center center';
+          vid.style.transition = 'transform 0.95s var(--ease)';
+          vid.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
+        }
+      }
+      overlay.classList.add('out');   // fade backdrop (CSS)
+      setTimeout(teardown, 1000);
+    }
+
+    if (reduceMotion) { teardown(); return; }
+
+    // attempt autoplay (muted + playsinline should allow it)
+    try { var pr = vid.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {}
+
+    vid.addEventListener('ended', finish);
+    vid.addEventListener('error', function () { setTimeout(finish, 200); });
+    if (skip) skip.addEventListener('click', finish);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') finish(); });
+
+    // safety nets: if the video never loads, or runs long, release the page
+    setTimeout(function () { if (!done && vid.readyState < 2) finish(); }, 6000);
+    setTimeout(function () { if (!done) finish(); }, 22000);
+  })();
+
+  /* ---------------- Hero logo video fallback ----------------
+     If the browser can't decode the mp4, reveal the wordmark behind it. */
+  (function logoVideo() {
+    var lv = document.querySelector('.logo-video');
+    if (!lv) return;
+    function fail() { lv.classList.add('failed'); }
+    lv.addEventListener('error', fail);
+    // some browsers stall silently rather than firing error
+    setTimeout(function () { if (lv.readyState < 2) fail(); }, 6500);
+  })();
+
   /* ---------------- Count-up ---------------- */
   function countUp(el) {
     var target = parseFloat(el.getAttribute('data-count'));

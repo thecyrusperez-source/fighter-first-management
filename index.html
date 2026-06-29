@@ -12,9 +12,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
-  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}.intro{display:none!important}body.intro-active{overflow:auto!important}</style></noscript>
 </head>
-<body>
+<body class="intro-active">
+  <!-- ===== INTRO ANIMATION: plays full-screen on load, then FLIP-shrinks
+       down into the hero logo and hands off to the looping logo video ===== -->
+  <div class="intro" id="intro">
+    <button class="intro__skip" type="button" aria-label="Skip intro">Skip &rsaquo;</button>
+    <video class="intro__video" muted playsinline autoplay preload="auto">
+      <source src="assets/ff-animation.mp4" type="video/mp4" />
+    </video>
+  </div>
+
   <!-- persistent spark backdrop -->
   <canvas id="spark-canvas" aria-hidden="true"></canvas>
 
@@ -58,11 +67,15 @@
       <p class="logo-note">Logo animation — Grok render (placeholder)</p>
       <div class="hero__glow" aria-hidden="true"></div>
 
-      <!-- logo-anim-container: leave for injecting Grok animation later -->
+      <!-- logo-anim-container: now holds the Grok-rendered logo animation.
+           The intro video shrinks into this box and hands off to this loop. -->
       <div class="logo-anim-container" role="img" aria-label="Fighters First Management logo">
-        <!-- PLACEHOLDER: replace .logo-fallback with rendered logo animation -->
-        <div class="logo-fallback">
-          <span class="emblem" aria-hidden="true"></span>
+        <video class="logo-video" muted loop playsinline autoplay preload="auto">
+          <source src="assets/ff-animation.mp4" type="video/mp4" />
+        </video>
+        <!-- fallback wordmark if video can't play -->
+        <div class="logo-fallback" aria-hidden="true">
+          <span class="emblem"></span>
           <span class="mark">Fighters First</span>
           <span class="sub">Management</span>
         </div>
