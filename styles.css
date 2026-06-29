@@ -1182,10 +1182,10 @@ body.menu-open .nav__overlay a:nth-child(6) { transition-delay: 0.40s; }
 }
 @media (min-width: 920px) {
   .hero__stage {
-    grid-template-columns: 1fr minmax(260px, 0.8fr) 1fr;
+    grid-template-columns: 1fr minmax(240px, 0.66fr) 1fr;
     align-items: stretch;
     gap: 0;
-    min-height: clamp(460px, 60vh, 640px);
+    min-height: clamp(540px, 74vh, 820px);
   }
 }
 
@@ -1212,11 +1212,21 @@ body.menu-open .nav__overlay a:nth-child(6) { transition-delay: 0.40s; }
 
 /* fighters — frameless cutouts that fade into the background */
 .fighter { position: relative; z-index: 1; display: block; text-decoration: none; align-self: end; min-width: 0; }
+/* controlled red ember glow pooled behind each fighter */
+.fighter::before {
+  content: "";
+  position: absolute;
+  inset: 8% -12% -4% -12%;
+  z-index: -1;
+  background: radial-gradient(58% 56% at 50% 58%, rgba(141, 32, 1, 0.34), rgba(141, 32, 1, 0.10) 45%, transparent 72%);
+  filter: blur(34px);
+  pointer-events: none;
+}
 .fighter__cut {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 78vh;
+  max-height: 88vh;
   object-fit: contain;
   transition: filter 0.55s var(--ease), transform 0.55s var(--ease);
 }
@@ -1259,17 +1269,17 @@ body.menu-open .nav__overlay a:nth-child(6) { transition-delay: 0.40s; }
 
 /* desktop: bleed the cutouts outward, anchor labels toward the centre */
 @media (min-width: 920px) {
-  .fighter { width: min(40vw, 560px); align-self: end; }
-  .fighter--left  { justify-self: start; transform: translateX(clamp(-100px, -7vw, -40px)); }
-  .fighter--right { justify-self: end;   transform: translateX(clamp(40px, 7vw, 100px)); }
+  .fighter { width: min(50vw, 720px); align-self: end; }
+  .fighter--left  { justify-self: start; transform: translateX(clamp(-200px, -12vw, -80px)); }
+  .fighter--right { justify-self: end;   transform: translateX(clamp(80px, 12vw, 200px)); }
   /* names sit low over each fighter, mirrored to frame the center */
-  .fighter__label { bottom: clamp(0.75rem, 3vh, 2.5rem); }
-  .fighter--left  .fighter__label { left: 6%;  right: auto; text-align: left;  align-items: flex-start; }
-  .fighter--right .fighter__label { right: 6%; left: auto;  text-align: right; align-items: flex-end; }
+  .fighter__label { bottom: clamp(1rem, 5vh, 4rem); }
+  .fighter--left  .fighter__label { left: 8%;  right: auto; text-align: left;  align-items: flex-start; }
+  .fighter--right .fighter__label { right: 8%; left: auto;  text-align: right; align-items: flex-end; }
 }
 /* mobile: stack logo, Brian, CTA, Frank; centre the labels under each figure */
 @media (max-width: 919px) {
-  .fighter { width: min(74vw, 360px); margin-inline: auto; }
+  .fighter { width: min(88vw, 440px); margin-inline: auto; }
   .fighter__label { position: relative; bottom: auto; margin-top: -2.5rem; align-items: center; text-align: center; width: 100%; }
   .fighter__last::after { margin-inline: auto; }
 }
