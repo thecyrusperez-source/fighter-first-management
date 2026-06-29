@@ -70,15 +70,11 @@
       <!-- LOGO (top center). The intro video shrinks into this box. -->
       <div class="hero__logo">
         <div class="logo-anim-container" role="img" aria-label="Fighters First Management logo">
-          <video class="logo-video" muted loop playsinline autoplay preload="auto">
+          <video class="logo-video" muted loop playsinline autoplay preload="auto" poster="assets/logo-emblem.png">
             <source src="assets/ff-animation.mp4" type="video/mp4" />
           </video>
-          <!-- fallback wordmark if video can't play -->
-          <div class="logo-fallback" aria-hidden="true">
-            <span class="emblem"></span>
-            <span class="mark">Fighters First</span>
-            <span class="sub">Management</span>
-          </div>
+          <!-- still emblem shows if the video can't play -->
+          <img class="logo-emblem" src="assets/logo-emblem.png" alt="" aria-hidden="true" decoding="async" />
         </div>
       </div>
 
